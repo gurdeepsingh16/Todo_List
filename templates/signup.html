@@ -1,0 +1,29 @@
+{% include 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1>Signup</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" name="username" class="form-control" required>
+
+        <label for="">Email</label>        
+        <input type="text" name="email" class="form-control" required>
+        
+        <label for="">Password</label>
+        <input type="text" name="password" class="form-control" required>
+
+        <label for="">Confirm Password</label>
+       <input type="text" name="cpassword" class="form-control" required>
+        <br>
+        <button type="submit" class="btn btn-success">Signup</button>  
+    </form>
+</div>
+{% if messages %}
+{% for i in messages %}
+<script>
+    alert('{{i}}')
+</script>
+{% endfor %}
+{% endif %}
+{% endblock %}

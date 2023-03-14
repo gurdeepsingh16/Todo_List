@@ -1,0 +1,25 @@
+{% include 'base.html' %}
+{% block content %}
+<title>Login</title>
+<div class="container">
+    <h1>Login</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text"  class="form-control" name="username" required>
+
+        <label for="">Password</label>
+        <input type="password" class="form-control"  name="password" required>
+        <br>
+        <button type="submit" class="btn btn-success">Login</button> or <a href="/signup"> Create Account</a>
+    </form>
+</div>
+
+{% if messages %}
+{% for i in messages %}
+<script>
+    alert('{{i}}')
+</script>
+{% endfor %}
+{% endif %}
+{% endblock %}

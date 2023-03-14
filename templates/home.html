@@ -1,0 +1,60 @@
+{% include 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<style>
+    input#id_item {
+    width: 35%;
+    display: table;
+    margin: auto;
+}
+</style>
+<div class="container text-center">
+    <h1>ADD Task HERE</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <br>
+        <button type="submit" class="btn btn-success" >Add Task</button>
+    </form>
+    {% if data %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Sr.</th>
+                <th>Task</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.item}}</td>
+                <td><a href="{% url 'delete' i.id %}" class="btn btn-danger">Delete</a></td>
+                <td><a href="{% url 'update' i.id %}" class="btn btn-danger">Edit</a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+    
+    
+    <br>
+
+</div>
+
+<script>
+    document.getElementsByClassName('requiredField').style.display = 'none'
+</script>
+
+
+
+{% else %}
+No Item Till Now
+{% endif %}
+
+{% endblock %}
