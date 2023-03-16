@@ -12,7 +12,7 @@ from django.views.decorators.cache import never_cache
 def home(request):
     if request.method =="GET":
         form = Todo_form()
-        data = Todo_model.objects.all()
+        data = Todo_model.objects.filter(user=request.user)
         return render(request,"home.html",{'data':data,'form':form})
     else:
         form = Todo_form(request.POST)
